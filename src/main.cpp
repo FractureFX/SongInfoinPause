@@ -40,13 +40,14 @@ class $modify(MyPauseLayer, PauseLayer) {
 			return;
 		}
 		auto ngUrl = "https://www.newgrounds.com/audio/listen/" + std::to_string(songinfo->m_songID);
-		auto fixedYTurl = "https://www.youtube.com/channel/" + songinfo->m_youtubeChannel;
+		auto fixedYTUrl = "https://www.youtube.com/channel/" + songinfo->m_youtubeChannel;
+		auto ngArtistUrl = "https://" + songinfo->m_artistName + ".newgrounds.com";
 		SongInfoLayer::create(
 			songinfo->m_songName,
 			songinfo->m_artistName,
 			ngUrl,
-			ngUrl,
-			fixedYTurl, 
+			ngArtistUrl,
+			fixedYTUrl, 
 			"",
 			songID,
 			"",
