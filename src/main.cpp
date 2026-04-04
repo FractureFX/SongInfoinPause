@@ -39,19 +39,23 @@ class $modify(MyPauseLayer, PauseLayer) {
 			Notification::create("No song info available!", NotificationIcon::Error)->show();
 			return;
 		}
-		auto ngUrl = "https://www.newgrounds.com/audio/listen/" + std::to_string(songinfo->m_songID);
+
 		auto fixedYTUrl = "https://www.youtube.com/channel/" + songinfo->m_youtubeChannel;
 		auto ngArtistUrl = "https://" + songinfo->m_artistName + ".newgrounds.com";
-		SongInfoLayer::create(
+		if (songinfo->m_songUrl.empty()) {
+			songinfo->m_songUrl = "https://ncs.io";
+		}
+		auto sil = SongInfoLayer::create(
 			songinfo->m_songName,
 			songinfo->m_artistName,
-			ngUrl,
+			songinfo->m_songUrl,
 			ngArtistUrl,
 			fixedYTUrl, 
 			"",
 			songID,
 			"",
 			songinfo->m_nongType
-		)->show();
+		);
+		sil->show();
 	}
 };
