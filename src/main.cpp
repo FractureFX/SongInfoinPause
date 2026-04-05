@@ -40,15 +40,16 @@ class $modify(MyPauseLayer, PauseLayer) {
 			return;
 		}
 
+		auto ngSongUrl = "https://www.newgrounds.com/audio/listen/" + std::to_string(songID);
 		auto fixedYTUrl = "https://www.youtube.com/channel/" + songinfo->m_youtubeChannel;
 		auto ngArtistUrl = "https://" + songinfo->m_artistName + ".newgrounds.com";
-		if (songinfo->m_songUrl.empty()) {
-			songinfo->m_songUrl = "https://ncs.io";
+		if (songID > 10000000) {
+			ngSongUrl = songinfo->m_songUrl.c_str();
 		}
 		auto sil = SongInfoLayer::create(
 			songinfo->m_songName,
 			songinfo->m_artistName,
-			songinfo->m_songUrl,
+			ngSongUrl,
 			ngArtistUrl,
 			fixedYTUrl, 
 			"",
