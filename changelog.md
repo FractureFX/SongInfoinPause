@@ -1,3 +1,6 @@
+# v1.0.3
+- More bugfixes
+
 # v1.0.2
 - Clicking "Download Soundtrack" on a Newgrounds song actually takes you to the Newgrounds page of that song now
 - Bugfixes

@@ -58,5 +58,18 @@ class $modify(MyPauseLayer, PauseLayer) {
 			songinfo->m_nongType
 		);
 		sil->show();
+		auto cclayer = sil->getChildByType<CCLayer>(0);
+		auto ccmenu = cclayer->getChildByType<CCMenu>(0);
+		auto ytspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-1);
+		if (songinfo->m_youtubeChannel.empty()) {
+            ytspr->setVisible(false);
+			auto ngspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
+            ngspr->setPositionX(200);
+		}
+		if (songinfo->m_songUrl.empty()) {
+			auto webspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
+			webspr->setVisible(false);
+			ytspr->setPositionX(200);
+		}
 	}
 };
