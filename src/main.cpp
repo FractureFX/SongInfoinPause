@@ -59,15 +59,30 @@ class $modify(MyPauseLayer, PauseLayer) {
 		);
 		sil->show();
 		auto cclayer = sil->getChildByType<CCLayer>(0);
+		if (!cclayer) {
+			return;
+		}
 		auto ccmenu = cclayer->getChildByType<CCMenu>(0);
+		if (!ccmenu) {
+			return;
+		}
 		auto ytspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-1);
+		if (!ytspr) {
+			return;
+		}
 		if (songinfo->m_youtubeChannel.empty()) {
             ytspr->setVisible(false);
 			auto ngspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
+			if (!ngspr) {
+				return;
+			}
             ngspr->setPositionX(200);
 		}
 		if (songinfo->m_songUrl.empty()) {
 			auto webspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
+			if (!webspr) {
+				return;
+			}
 			webspr->setVisible(false);
 			ytspr->setPositionX(200);
 		}

@@ -1,3 +1,6 @@
+# v1.0.4
+- Forgot nullptr checks (whoops)
+
 # v1.0.3
 - More bugfixes
 
