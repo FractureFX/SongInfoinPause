@@ -18,8 +18,11 @@ class $modify(MyPauseLayer, PauseLayer) {
 			return;
 		}
 
-		auto spr = CCSprite::createWithSpriteFrameName("edit_eSongBtn_001.png");
-		spr->setScale(0.8f);
+		auto sprlabel = CCSprite::create("songspr.png"_spr);
+		auto spr = CircleButtonSprite::create(sprlabel, geode::CircleBaseColor::Green, geode::CircleBaseSize::Medium);
+		sprlabel->setScale(1.0f);
+		sprlabel->setPositionX(24);
+		spr->setScale(0.7f);
 		auto btn = CCMenuItemSpriteExtra::create(
 			spr, this, menu_selector(MyPauseLayer::onSongInfoButton)
 		);

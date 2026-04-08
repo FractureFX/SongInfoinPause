@@ -1,3 +1,6 @@
+# v1.0.5
+- New button
+
 # v1.0.4
 - Forgot nullptr checks (whoops)
 

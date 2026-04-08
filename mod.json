@@ -7,7 +7,7 @@
 	},
 	"id": "fracturefx.song-info-in-pause",
 	"name": "Song Info in Pause",
-	"version": "v1.0.4",
+	"version": "v1.0.5",
 	"developer": "FractureFX",
 	"description": "Shows the song info in the pause menu",
 	"dependencies": {
@@ -25,5 +25,10 @@
 	},
 	"links": {
 		"source": "https://github.com/FractureFX/SongInfoinPause"
+	},
+	"resources": {
+		"sprites": [
+			"resources/songspr.png"
+		]
 	}
 }
