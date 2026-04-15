@@ -1,3 +1,6 @@
+# v1.0.6
+- README.md badges
+
 # v1.0.5
 - New button
 
