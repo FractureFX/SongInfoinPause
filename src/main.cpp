@@ -73,21 +73,23 @@ class $modify(MyPauseLayer, PauseLayer) {
 		if (!ytspr) {
 			return;
 		}
-		if (songinfo->m_youtubeChannel.empty()) {
-            ytspr->setVisible(false);
-			auto ngspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
-			if (!ngspr) {
-				return;
+		if (ngSongUrl != "https://ncs.io") {
+			if (songinfo->m_youtubeChannel.empty()) {
+				ytspr->setVisible(false);
+				auto ngspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
+				if (!ngspr) {
+					return;
+				}
+				ngspr->setPositionX(200);
 			}
-            ngspr->setPositionX(200);
-		}
-		if (songinfo->m_songUrl.empty()) {
-			auto webspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
-			if (!webspr) {
-				return;
+			if (songinfo->m_songUrl.empty()) {
+				auto webspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
+				if (!webspr) {
+					return;
+				}
+				webspr->setVisible(false);
+				ytspr->setPositionX(200);
 			}
-			webspr->setVisible(false);
-			ytspr->setPositionX(200);
 		}
 	}
 };

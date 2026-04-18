@@ -1,3 +1,6 @@
+# v1.0.7
+- Fixed bug for NCS songs
+
 # v1.0.6
 - README.md badges
 
