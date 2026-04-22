@@ -73,7 +73,7 @@ class $modify(MyPauseLayer, PauseLayer) {
 		if (!ytspr) {
 			return;
 		}
-		if (ngSongUrl != "https://ncs.io") {
+		if (!ngSongUrl.starts_with("https://ncs.io") || !"") {
 			if (songinfo->m_youtubeChannel.empty()) {
 				ytspr->setVisible(false);
 				auto ngspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);

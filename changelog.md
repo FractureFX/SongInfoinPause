@@ -1,3 +1,6 @@
+# v1.0.8
+- Yet another NCS fix
+
 # v1.0.7
 - Fixed bug for NCS songs
 
