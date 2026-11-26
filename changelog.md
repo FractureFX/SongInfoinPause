@@ -1,3 +1,6 @@
+# v1.0.10
+- Android support
+
 # v1.0.9
 - 2.2091 support
 

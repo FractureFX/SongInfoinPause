@@ -2,12 +2,13 @@
 	"geode": "6.0.0",
 	"gd": {
 		"win": "2.2091",
+		"android": "2.2091",
 		"mac": "2.2091",
 		"ios": "2.2091"
 	},
 	"id": "fracturefx.song-info-in-pause",
 	"name": "Song Info in Pause",
-	"version": "v1.0.9",
+	"version": "v1.0.10",
 	"developer": "FractureFX",
 	"description": "Shows the song info in the pause menu",
 	"dependencies": {
