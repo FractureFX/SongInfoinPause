@@ -8,8 +8,9 @@ using namespace geode::prelude;
 class $modify(MyPauseLayer, PauseLayer) {
 	void customSetup() {
 		PauseLayer::customSetup();
-		auto leftMenu = this->getChildByID("left-button-menu");
-		auto rightMenu = this->getChildByID("right-button-menu");
+		auto mainLayer = this->getChildByID("main-layer");
+		auto leftMenu = mainLayer->getChildByID("left-button-menu");
+		auto rightMenu = mainLayer->getChildByID("right-button-menu");
 		auto settingPos = Mod::get()->getSettingValue<std::string>("position");
 		auto targetMenu = (settingPos == "Left") ? leftMenu : rightMenu;
 
@@ -22,7 +23,7 @@ class $modify(MyPauseLayer, PauseLayer) {
 		auto spr = CircleButtonSprite::create(sprlabel, geode::CircleBaseColor::Green, geode::CircleBaseSize::Medium);
 		sprlabel->setScale(1.0f);
 		sprlabel->setPositionX(24);
-		spr->setScale(0.7f);
+		spr->setScale(0.6f);
 		auto btn = CCMenuItemSpriteExtra::create(
 			spr, this, menu_selector(MyPauseLayer::onSongInfoButton)
 		);
@@ -43,53 +44,7 @@ class $modify(MyPauseLayer, PauseLayer) {
 			return;
 		}
 
-		auto ngSongUrl = "https://www.newgrounds.com/audio/listen/" + std::to_string(songID);
-		auto fixedYTUrl = "https://www.youtube.com/channel/" + songinfo->m_youtubeChannel;
-		auto ngArtistUrl = "https://" + songinfo->m_artistName + ".newgrounds.com";
-		if (songID > 10000000) {
-			ngSongUrl = songinfo->m_songUrl.c_str();
-		}
-		auto sil = SongInfoLayer::create(
-			songinfo->m_songName,
-			songinfo->m_artistName,
-			ngSongUrl,
-			ngArtistUrl,
-			fixedYTUrl, 
-			"",
-			songID,
-			"",
-			songinfo->m_nongType
-		);
+		auto sil = SongInfoLayer::create(songinfo);
 		sil->show();
-		auto cclayer = sil->getChildByType<CCLayer>(0);
-		if (!cclayer) {
-			return;
-		}
-		auto ccmenu = cclayer->getChildByType<CCMenu>(0);
-		if (!ccmenu) {
-			return;
-		}
-		auto ytspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-1);
-		if (!ytspr) {
-			return;
-		}
-		if (!ngSongUrl.starts_with("https://ncs.io") || !"") {
-			if (songinfo->m_youtubeChannel.empty()) {
-				ytspr->setVisible(false);
-				auto ngspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
-				if (!ngspr) {
-					return;
-				}
-				ngspr->setPositionX(200);
-			}
-			if (songinfo->m_songUrl.empty()) {
-				auto webspr = ccmenu->getChildByType<CCMenuItemSpriteExtra>(-2);
-				if (!webspr) {
-					return;
-				}
-				webspr->setVisible(false);
-				ytspr->setPositionX(200);
-			}
-		}
 	}
 };
